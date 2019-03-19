@@ -21,6 +21,9 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 800;
     font-style: normal;
 }
+.text-small {
+    font-size: 0.75rem !important;
+}
 
 #map {
   height: 100% !important;
@@ -38,6 +41,12 @@ h1, h2, h3, h4, h5, h6 {
     margin-bottom: 17px;
     padding: 10px;
     transform: rotate(-16deg);
+}
+
+.logo-font {
+    font-family: suave-script-pro, sans-serif;
+    font-weight: 700;
+    font-style: normal;
 }
 
 .logo-footer {
@@ -76,6 +85,9 @@ h1, h2, h3, h4, h5, h6 {
         box-shadow: 0px 0px 68px -8px rgba(0,0,0,1);
     }
     #map {
+        display: none;
+    }
+    .foot-contact {
         display: none;
     }
 }
@@ -143,4 +155,35 @@ h1, h2, h3, h4, h5, h6 {
     color: #000;
     background-color: #FAFAFA;
     border-color: #FFF;
+}
+
+.autohaus-lc-form input,
+.autohaus-lc-form textarea,
+.autohaus-lc-form button,
+.autohaus-lc-form select {
+    background: transparent;
+    border: 1px solid black;
+}
+
+.autohaus-lc-form input:focus,
+.autohaus-lc-form textarea:focus,
+.autohaus-lc-form button:focus,
+.autohaus-lc-form select:focus {
+    background: transparent;
+    color: black;
+    outline-color: goldenrod !important;
+    border: 2px solid black;
+    box-shadow: none;
+}
+
+.autohaus-lc-form button {
+    color: #000;
+    background-color: #FAFAFA;
+    border-color: #000;
+}
+
+.autohaus-lc-form button:hover {
+    color: #FFF;
+    background-color: #0A0A0A;
+    border-color: #000;
 }

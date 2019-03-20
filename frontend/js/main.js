@@ -1,3 +1,4 @@
+"use strict"
 const vehicles = [{
         "vehName": "AutoHaus M70",
         "vehPrice": "82000"
@@ -12,7 +13,7 @@ const vehicles = [{
     },
     {
         "vehName": "AutoHaus M80",
-        "vehPrice": "104000"
+        "vehPrice": "100000"
     },
     {
         "vehName": "AutoHaus M88",
@@ -42,6 +43,9 @@ const lcResults = {
     lcResPaySchedule: document.getElementById('lc_loan_payschedule'),
     lcResInterestRepaymentAmt: document.getElementById('lc_loan_intRepayAmt'),
     lcResTotalRepayments: document.getElementById('lc_loan_total_repay'),
+    lcResPaySchedule2: document.getElementById('lc_loan_payschedule_2'),
+    lcResPaySchedule2Amt: document.getElementById('lc_loan_payschedule_2_amt'),
+    lcResDetails: document.getElementById('lc_details')
 };
 var map;
 
@@ -83,31 +87,52 @@ function setLoanAmtByVehicle(e) {
 
 function processLoanCalculation(e) {
     e.preventDefault();
-    // let l, i, n, t;
-    // l = lcForm.lcLoanAmt.value; //Loan Amount pre interest
-    // i = lcForm.lcInterestRate.value; // intrest rate per year
-    // if(i.includes('%')) i = i.replace('%', '');
-    // if(lcForm.lcLoanRepaySchedule.value == "Weekly") n = 52;
-    // else if(lcForm.lcLoanRepaySchedule.value == "Monthly") n = 12;
-    // else if(lcForm.lcLoanRepaySchedule.value == "Fortnightly") n = 26
-    // else n = null;
-    // let t = lcForm.lcLoanTerm.value;
+    let l, i, n, t, v, s, k, o, a, d;
+    l = lcForm.lcLoanAmt.value; //Loan Amount pre interest
+    i = lcForm.lcInterestRate.value; // intrest rate per year
+    if(i.includes('%')) i = i.replace('%', '');
+    if(lcForm.lcLoanRepaySchedule.value == "Weekly") n = 52;
+    else if(lcForm.lcLoanRepaySchedule.value == "Monthly") n = 12;
+    else if(lcForm.lcLoanRepaySchedule.value == "Fortnightly") n = 26
+    else n = null;
+    t = lcForm.lcLoanTerm.value;
 
     
-    let a = [2, 'test', null, 'yes'];
+    let c = [l,i,n,t];
 
-    console.log(isValidString(a))
-    
-    
-    // if(n == null) return throwCalcError();
+    if(isValid(c)) {
 
-    
-
-    // let calc = 
-
+        l = parseFloat(l);
+        i = parseFloat(i);
+        t = parseFloat(t);
+        n = parseFloat(n);
+        // Amount per year
+        v = parseFloat((l / t).toFixed(2));
+        // interest per year
+        s = parseFloat(((v * i) / 100).toFixed(2));
+        // total interest
+        k = parseFloat((s * t).toFixed(2));
+        // total per schedule
+        o = ((v + s) / n).toFixed(2);
+        // total payable
+        a = (l + k).toFixed(2);
+        d = {
+            loanAmount: l,
+            loanTerm: t,
+            loanIntRate: i + "%",
+            repaySchedule: lcForm.lcLoanRepaySchedule.value,
+            interestRepay: ((l * i) / 100).toFixed(2),
+            repayAmtSchedule: o,
+            totalPayable: a
+        }
+        showLoanDetails(d);
+        
+    } else {
+        throwCalcError();
+    }
 }
 
-function isValidString(val) {
+function isValid(val) {
     let x = true;
     let m = [];
    
@@ -125,9 +150,35 @@ function isValidString(val) {
 
 }
 
+function showLoanDetails(data) {
+    
+
+    lcResults.lcResLoanAmt.innerText = "$" + formatMoney(data.loanAmount);
+    lcResults.lcResLoanTerm.innerText = data.loanTerm == 1 ? data.loanTerm + " Year" : data.loanTerm + " Years";
+    lcResults.lcResInterestRate.innerText = data.loanIntRate;
+    lcResults.lcResPaySchedule.innerText = data.repaySchedule;
+    lcResults.lcResInterestRepaymentAmt.innerText = "$" + formatMoney(data.interestRepay);
+    lcResults.lcResPaySchedule2.innerText = data.repaySchedule;
+    lcResults.lcResPaySchedule2Amt.innerText = "$" + formatMoney(data.repayAmtSchedule);
+    lcResults.lcResTotalRepayments.innerText = "$" + formatMoney(data.totalPayable);
+
+    lcResults.lcResDetails.style.display = "";
+}
+
 
 
 function throwCalcError() {
-    lcForm.lcErrorMsg.innerText = "Error processing form.";
+    lcForm.lcErrorMsg.innerHTML = "<strong>Error processing form!</strong> - Are you missing a value?";
     lcForm.lcErrorMsg.style.display = "";
 }
+
+function formatMoney(n, c, d, t) {
+    var c = isNaN(c = Math.abs(c)) ? 2 : c,
+        d = d == undefined ? "." : d,
+        t = t == undefined ? "," : t,
+        s = n < 0 ? "-" : "",
+        i = String(parseInt(n = Math.abs(Number(n) || 0).toFixed(c))),
+        j = (j = i.length) > 3 ? j % 3 : 0;
+
+    return s + (j ? i.substr(0, j) + t : "") + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + t) + (c ? d + Math.abs(n - i).toFixed(c).slice(2) : "");
+};

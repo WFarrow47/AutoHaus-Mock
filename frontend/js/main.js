@@ -96,40 +96,17 @@ function processLoanCalculation(e) {
     else if(lcForm.lcLoanRepaySchedule.value == "Fortnightly") n = 26
     else n = null;
     t = lcForm.lcLoanTerm.value;
-
-    
     let c = [l,i,n,t];
-
     if(isValid(c)) {
-
-        l = parseFloat(l);
-        i = parseFloat(i);
-        t = parseFloat(t);
-        n = parseFloat(n);
-        // Amount per year
+        l = parseFloat(l); i = parseFloat(i); t = parseFloat(t); n = parseFloat(n);
         v = parseFloat((l / t).toFixed(2));
-        // interest per year
         s = parseFloat(((v * i) / 100).toFixed(2));
-        // total interest
         k = parseFloat((s * t).toFixed(2));
-        // total per schedule
         o = ((v + s) / n).toFixed(2);
-        // total payable
         a = (l + k).toFixed(2);
-        d = {
-            loanAmount: l,
-            loanTerm: t,
-            loanIntRate: i + "%",
-            repaySchedule: lcForm.lcLoanRepaySchedule.value,
-            interestRepay: ((l * i) / 100).toFixed(2),
-            repayAmtSchedule: o,
-            totalPayable: a
-        }
+        d = {loanAmount: l,loanTerm: t,loanIntRate: i + "%",repaySchedule: lcForm.lcLoanRepaySchedule.value,interestRepay: ((l * i) / 100).toFixed(2),repayAmtSchedule: o,totalPayable: a};
         showLoanDetails(d);
-        
-    } else {
-        throwCalcError();
-    }
+    } else throwCalcError();
 }
 
 function isValid(val) {

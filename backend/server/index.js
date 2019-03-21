@@ -26,7 +26,7 @@ app.use('/favicon.ico', (req, res, next) => {
 });
 
 //load routes
-app.use('/', routes({}));
+app.use('/', routes({})); // middlewear function required.
 
 // error handling
 app.use((err, req, res, next) => {

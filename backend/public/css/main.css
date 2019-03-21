@@ -1,0 +1,189 @@
+/* Import Adobe typekit for the logo */
+@import url("https://use.typekit.net/mum3pfx.css");
+/* Import Google Fonts for the page */
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,600,800,900');
+
+html, body {
+    background-color: #000;
+    background-image: url('../img/bg/dark_stripes.png');
+}
+
+a {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.font-mont {
+    font-family: 'Montserrat', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-style: normal;
+}
+.text-small {
+    font-size: 0.75rem !important;
+}
+
+#map {
+  height: 100% !important;
+  border-radius: 5px;
+}
+
+.logo {
+    font-family: suave-script-pro, sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 2.6rem;
+    width: 287px;
+    margin: 0;
+    margin-top: -17px;
+    margin-bottom: 17px;
+    padding: 10px;
+    transform: rotate(-16deg);
+}
+
+.logo-font {
+    font-family: suave-script-pro, sans-serif;
+    font-weight: 700;
+    font-style: normal;
+}
+
+.logo-footer {
+    font-family: suave-script-pro, sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 2.6rem;
+    margin: 0;
+    margin-top: -17px;
+    margin-bottom: 17px;
+    padding: 10px;
+    transform: rotate(-16deg);
+    text-align:center;
+}
+
+.container-fluid {
+    width: 85%;
+    padding-right: 0px;
+    padding-left: 0px;
+    margin-right: auto;
+    margin-left: auto;
+    -webkit-box-shadow: 0px 0px 68px -8px rgba(0,0,0,1);
+    -moz-box-shadow: 0px 0px 68px -8px rgba(0,0,0,1);
+    box-shadow: 0px 0px 68px -8px rgba(0,0,0,1);
+}
+
+@media only screen and (max-width: 991px) {
+    .container-fluid {
+        width: 100%;
+        padding-right: 0px;
+        padding-left: 0px;
+        margin-right: auto;
+        margin-left: auto;
+        -webkit-box-shadow: 0px 0px 68px -8px rgba(0,0,0,1);
+        -moz-box-shadow: 0px 0px 68px -8px rgba(0,0,0,1);
+        box-shadow: 0px 0px 68px -8px rgba(0,0,0,1);
+    }
+    #map {
+        display: none;
+    }
+    .foot-contact {
+        display: none;
+    }
+}
+
+.navbar-dark .navbar-toggler {
+    color: rgba(255, 255, 255, 1);
+    border-color: transparent;
+    outline: 0;
+}
+
+.navbar-dark .navbar-toggler:hover {
+    outline: 0;
+    cursor: pointer;
+}
+
+
+.bg-autohaus {
+    background-color: #000 !important;
+}
+
+.bg-autohaus-alt {
+    background-color: rgb(10, 10, 10) !important;
+}
+
+.container-fluid {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    color: #FFF;
+    font-size: 1.4rem;
+}
+
+.navbar-dark .navbar-nav .nav-item {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.navbar-dark .navbar-nav .active>.nav-link,
+.navbar-dark .navbar-nav .nav-link.active,
+.navbar-dark .navbar-nav .nav-link.show,
+.navbar-dark .navbar-nav .show>.nav-link {
+    border-bottom: 2px solid white;
+}
+
+.autohaus-form input,
+.autohaus-form textarea,
+.autohaus-form button {
+    background: transparent;
+    border: 1px solid white;
+}
+
+.autohaus-form input:focus,
+.autohaus-form textarea:focus, 
+.autohaus-form button:focus {
+    background: transparent;
+    color: white;
+    outline-color: goldenrod !important;
+    border: 2px solid white;
+    box-shadow: none;
+}
+
+.autohaus-form button:hover {
+    color: #000;
+    background-color: #FAFAFA;
+    border-color: #FFF;
+}
+
+.autohaus-lc-form input,
+.autohaus-lc-form textarea,
+.autohaus-lc-form button,
+.autohaus-lc-form select {
+    background: transparent;
+    border: 1px solid black;
+}
+
+.autohaus-lc-form input:focus,
+.autohaus-lc-form textarea:focus,
+.autohaus-lc-form button:focus,
+.autohaus-lc-form select:focus {
+    background: transparent;
+    color: black;
+    outline-color: goldenrod !important;
+    border: 2px solid black;
+    box-shadow: none;
+}
+
+.autohaus-lc-form button {
+    color: #000;
+    background-color: #FAFAFA;
+    border-color: #000;
+}
+
+.autohaus-lc-form button:hover {
+    color: #FFF;
+    background-color: #0A0A0A;
+    border-color: #000;
+}

@@ -1,29 +1,60 @@
 "use strict"
-const vehicles = [{
+const vehicles = [
+    {
+        "vehName": "AutoHaus Outlander",
+        "vehPrice": "189000",
+        "vehImg": "/SUPERLUX-Outlander.jpg",
+        "vehCategory": "Superlux"
+    },
+    {
+        "vehName": "AutoHaus Elite",
+        "vehPrice": "489099",
+        "vehImg": "/SUPERLUX-Elite.jpg",
+        "vehCategory": "Superlux"
+    },
+    {
+        "vehName": "AutoHaus F1",
+        "vehPrice": "632999",
+        "vehImg": "/SUPERLUX-F1.jpg",
+        "vehCategory": "Superlux"
+    },
+    {
         "vehName": "AutoHaus M70",
-        "vehPrice": "82000"
-    },
-    {
-        "vehName": "AutoHaus M70A",
-        "vehPrice": "88000"
-    },
-    {
-        "vehName": "AutoHaus M72",
-        "vehPrice": "96000"
-    },
-    {
-        "vehName": "AutoHaus M80",
-        "vehPrice": "100000"
+        "vehPrice": "67999",
+        "vehImg": "/SEDAN-M70.jpg",
+        "vehCategory": "Sedan"
     },
     {
         "vehName": "AutoHaus M88",
-        "vehPrice": "110000"
+        "vehPrice": "79000",
+        "vehImg": "/SEDAN-M88.jpg",
+        "vehCategory": "Sedan"
     },
     {
         "vehName": "AutoHaus M90",
-        "vehPrice": "189000"
+        "vehPrice": "97999",
+        "vehImg": "/SEDAN-M90.jpg",
+        "vehCategory": "Sedan"
+    },
+    {
+        "vehName": "AutoHaus K8",
+        "vehPrice": "124999",
+        "vehImg": "/SUV-K8.jpg",
+        "vehCategory": "SUV"
+    },
+    {
+        "vehName": "AutoHaus S6A",
+        "vehPrice": "88000",
+        "vehImg": "/SUV-S6A.jpg",
+        "vehCategory": "SUV"
+    },
+    {
+        "vehName": "AutoHaus S8",
+        "vehPrice": "123999",
+        "vehImg": "/SUV-S8.jpg",
+        "vehCategory": "SUV"
     }
-]
+];
 
 // Loan Calculator! - F@$% 
 const lcForm = {
@@ -59,9 +90,9 @@ function initMap() {
     });
 }
 
-(function() {
+(function () {
     // Google Map
-    
+
     //copyright in footer.
     document.getElementById('copydate').innerHTML = new Date().getFullYear();
     loadEventListenersAll();
@@ -90,21 +121,32 @@ function processLoanCalculation(e) {
     let l, i, n, t, v, s, k, o, a, d;
     l = lcForm.lcLoanAmt.value; //Loan Amount pre interest
     i = lcForm.lcInterestRate.value; // intrest rate per year
-    if(i.includes('%')) i = i.replace('%', '');
-    if(lcForm.lcLoanRepaySchedule.value == "Weekly") n = 52;
-    else if(lcForm.lcLoanRepaySchedule.value == "Monthly") n = 12;
-    else if(lcForm.lcLoanRepaySchedule.value == "Fortnightly") n = 26
+    if (i.includes('%')) i = i.replace('%', '');
+    if (lcForm.lcLoanRepaySchedule.value == "Weekly") n = 52;
+    else if (lcForm.lcLoanRepaySchedule.value == "Monthly") n = 12;
+    else if (lcForm.lcLoanRepaySchedule.value == "Fortnightly") n = 26
     else n = null;
     t = lcForm.lcLoanTerm.value;
-    let c = [l,i,n,t];
-    if(isValid(c)) {
-        l = parseFloat(l); i = parseFloat(i); t = parseFloat(t); n = parseFloat(n);
+    let c = [l, i, n, t];
+    if (isValid(c)) {
+        l = parseFloat(l);
+        i = parseFloat(i);
+        t = parseFloat(t);
+        n = parseFloat(n);
         v = parseFloat((l / t).toFixed(2));
         s = parseFloat(((v * i) / 100).toFixed(2));
         k = parseFloat((s * t).toFixed(2));
         o = ((v + s) / n).toFixed(2);
         a = (l + k).toFixed(2);
-        d = {loanAmount: l,loanTerm: t,loanIntRate: i + "%",repaySchedule: lcForm.lcLoanRepaySchedule.value,interestRepay: ((l * i) / 100).toFixed(2),repayAmtSchedule: o,totalPayable: a};
+        d = {
+            loanAmount: l,
+            loanTerm: t,
+            loanIntRate: i + "%",
+            repaySchedule: lcForm.lcLoanRepaySchedule.value,
+            interestRepay: ((l * i) / 100).toFixed(2),
+            repayAmtSchedule: o,
+            totalPayable: a
+        };
         showLoanDetails(d);
     } else throwCalcError();
 }
@@ -112,15 +154,15 @@ function processLoanCalculation(e) {
 function isValid(val) {
     let x = true;
     let m = [];
-   
-    for(let i = 0; i < val.length; i++) {
+
+    for (let i = 0; i < val.length; i++) {
         let z = false; // undef
         let y = false; // null
         if (val[i] != "undefined") z = true;
-        if(val[i] != null) y = true; 
-        if(z == false || y == false) {
+        if (val[i] != null) y = true;
+        if (z == false || y == false) {
             x = false;
-            break;  
+            break;
         }
     }
     return x;
@@ -128,7 +170,7 @@ function isValid(val) {
 }
 
 function showLoanDetails(data) {
-    
+
 
     lcResults.lcResLoanAmt.innerText = "$" + formatMoney(data.loanAmount);
     lcResults.lcResLoanTerm.innerText = data.loanTerm == 1 ? data.loanTerm + " Year" : data.loanTerm + " Years";

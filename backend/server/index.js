@@ -1,6 +1,7 @@
-// require express, path
+// require express, path, bodyparser
 const express = require('express');
 const path = require('path');
+const bodyParser = require('body-parser');
 
 // assign express to app
 const app = express();
@@ -14,7 +15,7 @@ const config = require('./config/config')[app.get("env")];
 // require routes, services
 const routes = require('./routes');
 const { AHManage } = require('./services/Services');
-const AHData = new AHManage(config.data.models);
+const AHData = new AHManage(config.data.models, config.data.contacts);
 
 // set view engine to ejs / html
 app.engine('html', require('ejs').renderFile);
@@ -29,6 +30,9 @@ app.set('views', path.join(__dirname, './views'));
 app.use('/favicon.ico', (req, res, next) => {
   return res.sendStatus(204); // 204 - NO CONTENT
 });
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended:true}));
+
 
 app.use(async (req, res, next) => {
   try {

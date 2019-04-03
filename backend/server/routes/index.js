@@ -4,6 +4,7 @@ const router = require('express').Router();
 // route consts
 const modelsRoutes = require('./models');
 const financeRoutes = require('./finance');
+const contactsRoutes = require('./contacts');
 
 
 module.exports = (param) => {
@@ -17,8 +18,18 @@ module.exports = (param) => {
     home: true,});
   });
 
+  router.post('/contact', async (req,res,next) => {
+    const data = req.body;
+    AHData.writeContactToFile(data).then(() => {
+      res.send('200');
+    }).catch(error => {
+      res.send('500');
+    });
+  });
+
   router.use('/models', modelsRoutes(param));
-  router.use('/finance', financeRoutes(param))
+  router.use('/finance', financeRoutes(param));
+  router.use('/contacts', contactsRoutes(param));
 
   return router;
 };

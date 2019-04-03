@@ -95,6 +95,11 @@ const lcResults = {
     lcResPaySchedule2Amt: document.getElementById('lc_loan_payschedule_2_amt'),
     lcResDetails: document.getElementById('lc_details')
 };
+
+const contactForm = document.getElementById("ah-contact-us");
+
+
+
 var map;
 
 function initMap() {
@@ -113,6 +118,9 @@ function initMap() {
     document.getElementById('theme_change').addEventListener('click', checkInverse);
     //copyright in footer.
     document.getElementById('copydate').innerHTML = new Date().getFullYear();
+
+    // contact us form
+    contactForm.addEventListener('submit', handleContact);
     if(document.currentScript.getAttribute('data-calculator') === "valid") {
         loadEventListenersAll();
         vehicles.forEach(vehicle => {
@@ -128,34 +136,89 @@ function checkInverse(e) {
     if(color === null) {
         // if null assume dark (0) set light (1)
         localStorage.setItem('ah-color-choice', 1);
-        setInverse(1);
+        setInverse(1, false);
     } else {
         // else must have a value assigned.
         if(color == 1) {
             // if 1 then set 0
             localStorage.setItem('ah-color-choice', 0);
-            setInverse(0);
+            setInverse(0, false);
         } else {
             // else must be 0 so set 1
             localStorage.setItem('ah-color-choice', 1);
-            setInverse(1);
+            setInverse(1, false);
         }
     }
 }
 
-function setInverse(val) {
+function handleContact(e) {
+    e.preventDefault();
+    let cf,ce,ct,cm;
+
+    cf = e.target.elements['fname'].value.trim();
+    ce = e.target.elements['email'].value.trim();
+    ct = e.target.elements['tnum'].value.trim();
+    cm = e.target.elements['msg'].value.trim();
+
+    if (isValid([cf, ce, ct, cm])) {
+        e.target.elements['fname'].setAttribute('disabled', 'disabled');
+        e.target.elements['email'].setAttribute('disabled', 'disabled');
+        e.target.elements['tnum'].setAttribute('disabled', 'disabled');
+        e.target.elements['msg'].setAttribute('disabled', 'disabled');
+        $.ajax({
+            method: 'POST',
+            async: true,
+            url: '/contact',
+            data: {
+                fullName: cf,
+                email: ce,
+                tele: ct,
+                msg: cm
+            }
+        }).then(value => {
+            e.target.elements['fname'].removeAttribute('disabled');
+            e.target.elements['email'].removeAttribute('disabled');
+            e.target.elements['tnum'].removeAttribute('disabled');
+            e.target.elements['msg'].removeAttribute('disabled');
+            if(value == '200') {
+                document.getElementById('ah-success-box_1').style.display = 'block';                
+                e.target.elements['fname'].value = "";                
+                e.target.elements['email'].value = "";                
+                e.target.elements['tnum'].value = "";                
+                e.target.elements['msg'].value = "";
+            } else {
+                document.getElementById('ah-error-box_1').innerHTML = "<strong>Error!</strong> The server could not process the request.";
+                document.getElementById('ah-error-box_1').style.display = 'block';
+                e.target.elements['fname'].removeAttribute('disabled');
+                e.target.elements['email'].removeAttribute('disabled');
+                e.target.elements['tnum'].removeAttribute('disabled');
+                e.target.elements['msg'].removeAttribute('disabled');
+            }
+        });
+
+    } else {
+        document.getElementById('ah-error-box_1').style.display = 'block';
+        setTimeout(() => {
+            $('#ah-error-box_1').fadeOut();
+        }, 5000);
+    }
+}
+
+function setInverse(val, onload = true) {
     const html = document.querySelector('html');
-    if(val == 1) {
+    if(val == 1 && val != null) {
         if(!html.classList.contains('ah-inverse')) {
             html.classList.add('ah-inverse');
         } else {
             console.error(`[AH] Error Inversing Page: html already contains classname. (${val})`);
         }
-    } else if(val == 0) {
-        if(html.classList.contains('ah-inverse')) {
-            html.classList.remove('ah-inverse');
-        } else {
-            console.error(`[AH] Error Inversing Page: html does't contain classname. (${val})`);
+    } else if (val == 0 && val != null) {
+        if(onload != true) {
+            if(html.classList.contains('ah-inverse')) {
+                html.classList.remove('ah-inverse');
+            } else {
+                console.error(`[AH] Error Inversing Page: html does't contain classname. (${val})`);
+            }
         }
     }
 }
@@ -195,16 +258,24 @@ function processLoanCalculation(e) {
     } else throwCalcError();
 }
 
-function isValid(val) {
+function isValid(val, trim = false) {
     let x = true;
     let m = [];
-   
+    let k = [];
+    if(trim) {
+        val.forEach(item => {
+            k.push(item.trim());
+        });
+        val = k;
+    }
     for(let i = 0; i < val.length; i++) {
         let z = false; // undef
         let y = false; // null
+        let v = false; // ""
         if (val[i] != "undefined") z = true;
         if(val[i] != null) y = true; 
-        if(z == false || y == false) {
+        if(val[i] != "") v = true;
+        if(z == false || y == false || v == false) {
             x = false;
             break;  
         }

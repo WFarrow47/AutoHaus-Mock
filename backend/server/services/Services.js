@@ -4,16 +4,40 @@ const util = require('util');
 
 // promisify readfile.
 const readfile = util.promisify(fs.readFile);
+const writeFile = util.promisify(fs.writeFile);
 
 class AHDataEngine {
   // class requires a datafile to read from when initialising.
-  constructor(datafile) {
+  constructor(datafile, contactfile) {
     this.dataFile = datafile;
+    this.contactfile = contactfile;
+  }
+
+  writeContact(json) {
+    return new Promise(async (resolve, reject) => {
+      try {
+        const contactData = await readfile(this.contactfile, 'utf8');
+        const newContact = {fullName: json.fullName, email: json.email, tNum: json.tele, message: json.msg};
+        let c = JSON.parse(contactData);
+        c.contacts.push(newContact);
+        c = JSON.stringify(c);
+        await writeFile(this.contactfile, c).then(() => {
+          resolve();
+        });
+      } catch(err) {
+        reject(err);
+      }
+    });
   }
 
   async getData() {
     const data = await readfile(this.dataFile, 'utf8');
     return !data ? [] : JSON.parse(data);
+  }
+
+  async getCData() {
+    const cData = await readfile(this.contactfile, 'utf8');
+    return !cData ? [] : JSON.parse(cData);
   }
 
   async getModels() {
@@ -25,8 +49,8 @@ class AHDataEngine {
 }
 
 class AHManage extends AHDataEngine {
-  constructor(datafile) {
-    super(datafile);
+  constructor(datafile, contactfile) {
+    super(datafile, contactfile);
   }
   
   async getPopularModels() {
@@ -84,6 +108,23 @@ class AHManage extends AHDataEngine {
       }
     });
     return x;
+  }
+  
+  writeContactToFile(data) {
+    return new Promise(async (resolve, reject) => {
+      this.writeContact(data).then(() => {
+        resolve();
+      }).catch(error => {
+        reject(error);
+      });
+    });
+  }
+
+  async getAllContacts() {
+    const cData = await this.getCData();
+    return cData.contacts.map(contact => {
+      return {fullName: contact.fullName, email: contact.email, telephone: contact.tNum, message: contact.message};
+    });
   }
 }
 

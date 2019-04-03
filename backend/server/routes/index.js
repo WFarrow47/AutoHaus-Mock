@@ -21,9 +21,10 @@ module.exports = (param) => {
   router.post('/contact', async (req,res,next) => {
     const data = req.body;
     AHData.writeContactToFile(data).then(() => {
-      res.send('200');
+      res.json({hasError: false});
     }).catch(error => {
-      res.send('500');
+      console.log(error);
+      res.json({hasError: true, errorMsg: error});
     });
   });
 

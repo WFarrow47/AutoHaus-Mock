@@ -6,9 +6,17 @@ const util = require('util');
 const readfile = util.promisify(fs.readFile);
 const writeFile = util.promisify(fs.writeFile);
 
-class AHDataEngine {
+class AHUtilities {
+  sanitize(str) {
+    str = str.replace(/[^a-z0-9áéíóúñü \.,_-]/gim, "");
+    return str.trim();
+  }
+}
+
+class AHDataEngine extends AHUtilities {
   // class requires a datafile to read from when initialising.
   constructor(datafile, contactfile) {
+    super();
     this.dataFile = datafile;
     this.contactfile = contactfile;
   }
@@ -17,7 +25,12 @@ class AHDataEngine {
     return new Promise(async (resolve, reject) => {
       try {
         const contactData = await readfile(this.contactfile, 'utf8');
-        const newContact = {fullName: json.fullName, email: json.email, tNum: json.tele, message: json.msg};
+        const newContact = {
+            fullName: this.sanitize(json.fullName),
+            email: this.sanitize(json.email),
+            tNum: this.sanitize(json.tele),
+            message: this.sanitize(json.msg)
+            };
         let c = JSON.parse(contactData);
         c.contacts.push(newContact);
         c = JSON.stringify(c);

@@ -180,13 +180,15 @@ function handleContact(e) {
             e.target.elements['email'].removeAttribute('disabled');
             e.target.elements['tnum'].removeAttribute('disabled');
             e.target.elements['msg'].removeAttribute('disabled');
-            if(value == '200') {
+            if(!value.hasError) {
                 document.getElementById('ah-success-box_1').style.display = 'block';                
                 e.target.elements['fname'].value = "";                
                 e.target.elements['email'].value = "";                
                 e.target.elements['tnum'].value = "";                
                 e.target.elements['msg'].value = "";
             } else {
+                const error = value.errorMsg;
+                console.error(`[AH] Error Processing AJAX Request: ${error} &#9650;`);
                 document.getElementById('ah-error-box_1').innerHTML = "<strong>Error!</strong> The server could not process the request.";
                 document.getElementById('ah-error-box_1').style.display = 'block';
                 e.target.elements['fname'].removeAttribute('disabled');

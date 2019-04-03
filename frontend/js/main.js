@@ -95,14 +95,13 @@ function initMap() {
 
     //copyright in footer.
     document.getElementById('copydate').innerHTML = new Date().getFullYear();
-    loadEventListenersAll();
-    vehicles.forEach(vehicle => {
-        let opt = new Option(vehicle.vehName, vehicle.vehPrice);
-        // let opt = document.createElement('option', vehicle.vehPrice);
-        // let text = document.createTextNode(vehicle.vehName);
-        // opt.appendChild(text);
-        lcForm.lcVehSelect.appendChild(opt);
-    });
+    if(document.currentScript.getAttribute('data-calculator') === "valid") {
+        loadEventListenersAll();
+        vehicles.forEach(vehicle => {
+            let opt = new Option(vehicle.vehName, vehicle.vehPrice);
+            lcForm.lcVehSelect.appendChild(opt);
+        });
+    }
 })();
 
 function loadEventListenersAll() {
@@ -148,7 +147,7 @@ function processLoanCalculation(e) {
             totalPayable: a
         };
         showLoanDetails(d);
-    } else throwCalcError();
+    } else throwCalcError().show();
 }
 
 function isValid(val) {
@@ -170,8 +169,7 @@ function isValid(val) {
 }
 
 function showLoanDetails(data) {
-
-
+    throwCalcError().hide();
     lcResults.lcResLoanAmt.innerText = "$" + formatMoney(data.loanAmount);
     lcResults.lcResLoanTerm.innerText = data.loanTerm == 1 ? data.loanTerm + " Year" : data.loanTerm + " Years";
     lcResults.lcResInterestRate.innerText = data.loanIntRate;
@@ -187,8 +185,17 @@ function showLoanDetails(data) {
 
 
 function throwCalcError() {
-    lcForm.lcErrorMsg.innerHTML = "<strong>Error processing form!</strong> - Are you missing a value?";
-    lcForm.lcErrorMsg.style.display = "";
+    let isShowing;
+    return {
+        show() {
+            lcForm.lcErrorMsg.innerHTML = "<strong>Error processing form!</strong> - Are you missing a value?";
+            lcForm.lcErrorMsg.style.display = "";
+        }, isShowing() {
+            return isShowing;
+        }, hide() {
+            lcForm.lcErrorMsg.style.display = "none";
+        }
+    }
 }
 
 function formatMoney(n, c, d, t) {

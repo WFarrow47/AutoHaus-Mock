@@ -1,12 +1,77 @@
 "use strict"
-const vehicles = [
-    {"vehName": "AutoHaus M70","vehPrice": "82000"},
-    {"vehName": "AutoHaus M70A","vehPrice": "88000"},
-    {"vehName": "AutoHaus M72","vehPrice": "96000"},
-    {"vehName": "AutoHaus M80","vehPrice": "100000"},
-    {"vehName": "AutoHaus M88","vehPrice": "110000"},
-    {"vehName": "AutoHaus M90","vehPrice": "189000"}
-]
+const vehicles = [{
+            "id": 0,
+            "vehName": "AutoHaus Outlander",
+            "vehPrice": "189000",
+            "vehImg": "/SUPERLUX-Outlander.jpg",
+            "vehCategory": "Superlux",
+            "shortText": "Interdum et malesuada fames ac ante ipsum primis in faucibus. Integer quis porta massa. Morbi volutpat mattis augue, eu viverra enim congue ac. Pellentesque varius lectus ut velit dignissim accumsan. Fusce purus mauris, convallis nec congue id, auctor id diam. Sed nulla eros, aliquet vitae porttitor et, venenatis ut sem. Nulla metus velit, fringilla sit amet varius sit amet, feugiat in ligula. Curabitur imperdiet mollis sagittis. Curabitur dignissim nec nunc id porttitor."
+        },
+        {
+            "id": 1,
+            "vehName": "AutoHaus Elite",
+            "vehPrice": "489099",
+            "vehImg": "/SUPERLUX-Elite.jpg",
+            "vehCategory": "Superlux",
+            "shortText": "Interdum et malesuada fames ac ante ipsum primis in faucibus. Integer quis porta massa. Morbi volutpat mattis augue, eu viverra enim congue ac. Pellentesque varius lectus ut velit dignissim accumsan. Fusce purus mauris, convallis nec congue id, auctor id diam. Sed nulla eros, aliquet vitae porttitor et, venenatis ut sem. Nulla metus velit, fringilla sit amet varius sit amet, feugiat in ligula. Curabitur imperdiet mollis sagittis. Curabitur dignissim nec nunc id porttitor."
+        },
+        {
+            "id": 2,
+            "vehName": "AutoHaus F1",
+            "vehPrice": "632999",
+            "vehImg": "/SUPERLUX-F1.jpg",
+            "vehCategory": "Superlux",
+            "shortText": "Interdum et malesuada fames ac ante ipsum primis in faucibus. Integer quis porta massa. Morbi volutpat mattis augue, eu viverra enim congue ac. Pellentesque varius lectus ut velit dignissim accumsan. Fusce purus mauris, convallis nec congue id, auctor id diam. Sed nulla eros, aliquet vitae porttitor et, venenatis ut sem. Nulla metus velit, fringilla sit amet varius sit amet, feugiat in ligula. Curabitur imperdiet mollis sagittis. Curabitur dignissim nec nunc id porttitor."
+        },
+        {
+            "id": 3,
+            "vehName": "AutoHaus M70",
+            "vehPrice": "67999",
+            "vehImg": "/SEDAN-M70.jpg",
+            "vehCategory": "Sedan",
+            "shortText": "Interdum et malesuada fames ac ante ipsum primis in faucibus. Integer quis porta massa. Morbi volutpat mattis augue, eu viverra enim congue ac. Pellentesque varius lectus ut velit dignissim accumsan. Fusce purus mauris, convallis nec congue id, auctor id diam. Sed nulla eros, aliquet vitae porttitor et, venenatis ut sem. Nulla metus velit, fringilla sit amet varius sit amet, feugiat in ligula. Curabitur imperdiet mollis sagittis. Curabitur dignissim nec nunc id porttitor."
+        },
+        {
+            "id": 4,
+            "vehName": "AutoHaus M88",
+            "vehPrice": "79000",
+            "vehImg": "/SEDAN-M88.jpg",
+            "vehCategory": "Sedan",
+            "shortText": "Interdum et malesuada fames ac ante ipsum primis in faucibus. Integer quis porta massa. Morbi volutpat mattis augue, eu viverra enim congue ac. Pellentesque varius lectus ut velit dignissim accumsan. Fusce purus mauris, convallis nec congue id, auctor id diam. Sed nulla eros, aliquet vitae porttitor et, venenatis ut sem. Nulla metus velit, fringilla sit amet varius sit amet, feugiat in ligula. Curabitur imperdiet mollis sagittis. Curabitur dignissim nec nunc id porttitor."
+        },
+        {
+            "id": 5,
+            "vehName": "AutoHaus M90",
+            "vehPrice": "97999",
+            "vehImg": "/SEDAN-M90.jpg",
+            "vehCategory": "Sedan",
+            "shortText": "Interdum et malesuada fames ac ante ipsum primis in faucibus. Integer quis porta massa. Morbi volutpat mattis augue, eu viverra enim congue ac. Pellentesque varius lectus ut velit dignissim accumsan. Fusce purus mauris, convallis nec congue id, auctor id diam. Sed nulla eros, aliquet vitae porttitor et, venenatis ut sem. Nulla metus velit, fringilla sit amet varius sit amet, feugiat in ligula. Curabitur imperdiet mollis sagittis. Curabitur dignissim nec nunc id porttitor."
+        },
+        {
+            "id": 6,
+            "vehName": "AutoHaus K8",
+            "vehPrice": "124999",
+            "vehImg": "/SUV-K8.jpg",
+            "vehCategory": "SUV",
+            "shortText": "Interdum et malesuada fames ac ante ipsum primis in faucibus. Integer quis porta massa. Morbi volutpat mattis augue, eu viverra enim congue ac. Pellentesque varius lectus ut velit dignissim accumsan. Fusce purus mauris, convallis nec congue id, auctor id diam. Sed nulla eros, aliquet vitae porttitor et, venenatis ut sem. Nulla metus velit, fringilla sit amet varius sit amet, feugiat in ligula. Curabitur imperdiet mollis sagittis. Curabitur dignissim nec nunc id porttitor."
+        },
+        {
+            "id": 7,
+            "vehName": "AutoHaus S6A",
+            "vehPrice": "88000",
+            "vehImg": "/SUV-S6A.jpg",
+            "vehCategory": "SUV",
+            "shortText": "Interdum et malesuada fames ac ante ipsum primis in faucibus. Integer quis porta massa. Morbi volutpat mattis augue, eu viverra enim congue ac. Pellentesque varius lectus ut velit dignissim accumsan. Fusce purus mauris, convallis nec congue id, auctor id diam. Sed nulla eros, aliquet vitae porttitor et, venenatis ut sem. Nulla metus velit, fringilla sit amet varius sit amet, feugiat in ligula. Curabitur imperdiet mollis sagittis. Curabitur dignissim nec nunc id porttitor."
+        },
+        {
+            "id": 8,
+            "vehName": "AutoHaus S8",
+            "vehPrice": "123999",
+            "vehImg": "/SUV-S8.jpg",
+            "vehCategory": "SUV",
+            "shortText": "Interdum et malesuada fames ac ante ipsum primis in faucibus. Integer quis porta massa. Morbi volutpat mattis augue, eu viverra enim congue ac. Pellentesque varius lectus ut velit dignissim accumsan. Fusce purus mauris, convallis nec congue id, auctor id diam. Sed nulla eros, aliquet vitae porttitor et, venenatis ut sem. Nulla metus velit, fringilla sit amet varius sit amet, feugiat in ligula. Curabitur imperdiet mollis sagittis. Curabitur dignissim nec nunc id porttitor."
+        }
+    ];
 
 // Loan Calculator! - F@$% 
 const lcForm = {
@@ -43,19 +108,57 @@ function initMap() {
 }
 
 (function() {
-    // Google Map
-    
+    setInverse(localStorage.getItem('ah-color-choice'));
+    // 1 = light / 0 = default/dark
+    document.getElementById('theme_change').addEventListener('click', checkInverse);
     //copyright in footer.
     document.getElementById('copydate').innerHTML = new Date().getFullYear();
-    loadEventListenersAll();
-    vehicles.forEach(vehicle => {
-        let opt = new Option(vehicle.vehName, vehicle.vehPrice);
-        // let opt = document.createElement('option', vehicle.vehPrice);
-        // let text = document.createTextNode(vehicle.vehName);
-        // opt.appendChild(text);
-        lcForm.lcVehSelect.appendChild(opt);
-    });
+    if(document.currentScript.getAttribute('data-calculator') === "valid") {
+        loadEventListenersAll();
+        vehicles.forEach(vehicle => {
+            let opt = new Option(vehicle.vehName, vehicle.vehPrice);
+            lcForm.lcVehSelect.appendChild(opt);
+        });
+    }
 })();
+
+function checkInverse(e) {
+    e.preventDefault();
+    const color = localStorage.getItem('ah-color-choice');
+    if(color === null) {
+        // if null assume dark (0) set light (1)
+        localStorage.setItem('ah-color-choice', 1);
+        setInverse(1);
+    } else {
+        // else must have a value assigned.
+        if(color == 1) {
+            // if 1 then set 0
+            localStorage.setItem('ah-color-choice', 0);
+            setInverse(0);
+        } else {
+            // else must be 0 so set 1
+            localStorage.setItem('ah-color-choice', 1);
+            setInverse(1);
+        }
+    }
+}
+
+function setInverse(val) {
+    const html = document.querySelector('html');
+    if(val == 1) {
+        if(!html.classList.contains('ah-inverse')) {
+            html.classList.add('ah-inverse');
+        } else {
+            console.error(`[AH] Error Inversing Page: html already contains classname. (${val})`);
+        }
+    } else if(val == 0) {
+        if(html.classList.contains('ah-inverse')) {
+            html.classList.remove('ah-inverse');
+        } else {
+            console.error(`[AH] Error Inversing Page: html does't contain classname. (${val})`);
+        }
+    }
+}
 
 function loadEventListenersAll() {
     lcForm.lcProcessCalculation.addEventListener('click', processLoanCalculation);

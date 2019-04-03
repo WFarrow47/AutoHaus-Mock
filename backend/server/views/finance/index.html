@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<% include ../includes/head.html %>
+
+<body>
+  <div class="container-fluid">
+    <% include ../includes/navbar.html %>
+    <div class="col-md-12 bg-light">
+      <div class="row">
+        <div class="col-md-12 text-center pt-5 pb-5">
+          <h1>AutoHaus Finance</h1>
+        <p class="pt-4 w-75 mx-auto">
+          AutoHaus Finance™ has been developed to provide flexibility at the end of your finance contract,
+          letting you enjoy the new AutoHaus experience again and again. At the end of your finance contract you can pay any
+          amounts owing on your finance contract to keep your AutoHaus or trade it in at the AutoHaus dealer to step
+          into the latest AutoHaus model and continue your journey with us. The choice is yours.
+        </p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6 p-5">
+          <div class="row text-center">
+            <h2 class="pb-4 mx-auto">Finance Calculator</h2>
+            <p class="font-mont mx-auto w-75">
+              Our base finance rate is 8.67% per annum. As finance is tailored for each customer, this calculator will give you an estimate of your repayments. If you would like a more inclusive estimate, please visit our showroom and speak to one of our friendly sales assistants.
+            </p>
+          </div>
+          <div class="row">
+            <div class="col-md-12 w-100">
+              <div class="alert alert-danger" id="lc_form_error_msg" style="display:none;" role="alert"></div>
+            </div>
+            <form class="autohaus-lc-form w-100">
+              <div class="form-row">
+                <div class="form-group col-md-8">
+                  <label for="inputEmail4">Vehicle</label>
+                  <div class="input-group">
+                    <select class="custom-select" id="lc_form_vehicle_select">
+                      <option selected>Choose...</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group col-md-4">
+                  <label for="inputPassword4">Loan Amount</label>
+                  <input type="number" disabled="disabled" class="form-control disabled" id="lc_form_loan_amt" placeholder="0">
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group col-md-4">
+                  <div class="form-group">
+                    <label for="inputAddress">Interest Rate</label>
+                    <input type="text" class="form-control" id="lc_form_interest_rate" value="8.67%">
+                  </div>
+                </div>
+                <div class="form-group col-md-4">
+                  <label for="inputEmail4">Loan Term</label>
+                  <div class="input-group">
+                    <select class="custom-select" id="lc_form_loan_term">
+                      <option selected>Choose...</option>
+                      <option value="1">1 Year</option>
+                      <option value="2">2 Years</option>
+                      <option value="3">3 Years</option>
+                      <option value="4">4 Years</option>
+                      <option value="5">5 Years</option>
+                      <option value="6">6 Years</option>
+                      <option value="7">7 Years</option>
+                      <option value="8">8 Years</option>
+                      <option value="9">9 Years</option>
+                      <option value="10">10 Years</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group col-md-4">
+                  <label for="inputEmail4">Repayment Schedule</label>
+                  <div class="input-group">
+                    <select class="custom-select" id="lc_form_loan_repay_schedule">
+                      <option selected>Choose...</option>
+                      <option value="Weekly">Weekly</option>
+                      <option value="Fortnightly">Fortnightly</option>
+                      <option value="Monthly">Monthly</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+
+              <button id="lc_form_process_calculation" class="btn btn-primary float-right">Calculate</button>
+            </form>
+          </div>
+          <div class="row pt-4" id="lc_details" style="display: none;">
+            <div class="col-md-12 mx-auto">
+              <h5>Loan Amount</h5>
+              <p id="lc_loan_amt">&nbsp;</p>
+              <h5>Loan Term</h5>
+              <p id="lc_loan_term">&nbsp;</p>
+              <h5>Interest Rate</h5>
+              <p id="lc_loan_intRate">&nbsp;</p>
+              <h5>Repayment Schedule</h5>
+              <p id="lc_loan_payschedule">&nbsp;</p>
+              <h5>Interest Repayment</h5>
+              <p id="lc_loan_intRepayAmt">&nbsp;</p>
+              <h5><span id="lc_loan_payschedule_2">&nbsp;</span> Repayment</h5>
+              <p id="lc_loan_payschedule_2_amt">&nbsp;</p>
+              <div class="row">
+                <div class="col-md-6">
+                  <h3>Total Repayments</h3>
+                </div>
+                <div class="col-md-6 text-right">
+                  <p style="font-size:1.75rem;" id="lc_loan_total_repay">&nbsp;</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <p class="text-muted text-small pt-5">
+              Note: The results from this calculator should be used as an indication only. Results do not represent either quotes
+              or pre-qualifications for a loan. The specific details of your loan will be provided to you in your loan contract. It
+              is advised that you consult your financial adviser before taking out a loan.
+            </p>
+          </div>
+        </div>
+        <div class="col-md-6 p-5">
+          <img src="./img/car9.jpg" class="img-fluid" alt="..." />
+        </div>
+      </div>
+    </div>
+    <% include ../includes/footer.html %>
+  </div>
+</body>
+
+</html>

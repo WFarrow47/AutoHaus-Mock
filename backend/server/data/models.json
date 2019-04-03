@@ -1,0 +1,67 @@
+{
+    "vehicles": [{ 
+      "id": 0,
+      "vehName": "AutoHaus Outlander",
+      "vehPrice": "189000",
+      "vehImg": "/SUPERLUX-Outlander.jpg",
+      "vehCategory": "Superlux",
+      "shortText": "Interdum et malesuada fames ac ante ipsum primis in faucibus. Integer quis porta massa. Morbi volutpat mattis augue, eu viverra enim congue ac. Pellentesque varius lectus ut velit dignissim accumsan. Fusce purus mauris, convallis nec congue id, auctor id diam. Sed nulla eros, aliquet vitae porttitor et, venenatis ut sem. Nulla metus velit, fringilla sit amet varius sit amet, feugiat in ligula. Curabitur imperdiet mollis sagittis. Curabitur dignissim nec nunc id porttitor."
+    },
+    { "id": 1,
+      "vehName": "AutoHaus Elite",
+      "vehPrice": "489099",
+      "vehImg": "/SUPERLUX-Elite.jpg",
+      "vehCategory": "Superlux",
+      "shortText": "Interdum et malesuada fames ac ante ipsum primis in faucibus. Integer quis porta massa. Morbi volutpat mattis augue, eu viverra enim congue ac. Pellentesque varius lectus ut velit dignissim accumsan. Fusce purus mauris, convallis nec congue id, auctor id diam. Sed nulla eros, aliquet vitae porttitor et, venenatis ut sem. Nulla metus velit, fringilla sit amet varius sit amet, feugiat in ligula. Curabitur imperdiet mollis sagittis. Curabitur dignissim nec nunc id porttitor."
+    },
+    { "id": 2,
+      "vehName": "AutoHaus F1",
+      "vehPrice": "632999",
+      "vehImg": "/SUPERLUX-F1.jpg",
+      "vehCategory": "Superlux",
+      "shortText": "Interdum et malesuada fames ac ante ipsum primis in faucibus. Integer quis porta massa. Morbi volutpat mattis augue, eu viverra enim congue ac. Pellentesque varius lectus ut velit dignissim accumsan. Fusce purus mauris, convallis nec congue id, auctor id diam. Sed nulla eros, aliquet vitae porttitor et, venenatis ut sem. Nulla metus velit, fringilla sit amet varius sit amet, feugiat in ligula. Curabitur imperdiet mollis sagittis. Curabitur dignissim nec nunc id porttitor."
+    },
+    { "id": 3,
+      "vehName": "AutoHaus M70",
+      "vehPrice": "67999",
+      "vehImg": "/SEDAN-M70.jpg",
+      "vehCategory": "Sedan",
+      "shortText": "Interdum et malesuada fames ac ante ipsum primis in faucibus. Integer quis porta massa. Morbi volutpat mattis augue, eu viverra enim congue ac. Pellentesque varius lectus ut velit dignissim accumsan. Fusce purus mauris, convallis nec congue id, auctor id diam. Sed nulla eros, aliquet vitae porttitor et, venenatis ut sem. Nulla metus velit, fringilla sit amet varius sit amet, feugiat in ligula. Curabitur imperdiet mollis sagittis. Curabitur dignissim nec nunc id porttitor."
+    },
+    { "id": 4,
+      "vehName": "AutoHaus M88",
+      "vehPrice": "79000",
+      "vehImg": "/SEDAN-M88.jpg",
+      "vehCategory": "Sedan",
+      "shortText": "Interdum et malesuada fames ac ante ipsum primis in faucibus. Integer quis porta massa. Morbi volutpat mattis augue, eu viverra enim congue ac. Pellentesque varius lectus ut velit dignissim accumsan. Fusce purus mauris, convallis nec congue id, auctor id diam. Sed nulla eros, aliquet vitae porttitor et, venenatis ut sem. Nulla metus velit, fringilla sit amet varius sit amet, feugiat in ligula. Curabitur imperdiet mollis sagittis. Curabitur dignissim nec nunc id porttitor."
+    },
+    { "id": 5,
+      "vehName": "AutoHaus M90",
+      "vehPrice": "97999",
+      "vehImg": "/SEDAN-M90.jpg",
+      "vehCategory": "Sedan",
+      "shortText": "Interdum et malesuada fames ac ante ipsum primis in faucibus. Integer quis porta massa. Morbi volutpat mattis augue, eu viverra enim congue ac. Pellentesque varius lectus ut velit dignissim accumsan. Fusce purus mauris, convallis nec congue id, auctor id diam. Sed nulla eros, aliquet vitae porttitor et, venenatis ut sem. Nulla metus velit, fringilla sit amet varius sit amet, feugiat in ligula. Curabitur imperdiet mollis sagittis. Curabitur dignissim nec nunc id porttitor."
+    },
+    { "id": 6,
+      "vehName": "AutoHaus K8",
+      "vehPrice": "124999",
+      "vehImg": "/SUV-K8.jpg",
+      "vehCategory": "SUV",
+      "shortText": "Interdum et malesuada fames ac ante ipsum primis in faucibus. Integer quis porta massa. Morbi volutpat mattis augue, eu viverra enim congue ac. Pellentesque varius lectus ut velit dignissim accumsan. Fusce purus mauris, convallis nec congue id, auctor id diam. Sed nulla eros, aliquet vitae porttitor et, venenatis ut sem. Nulla metus velit, fringilla sit amet varius sit amet, feugiat in ligula. Curabitur imperdiet mollis sagittis. Curabitur dignissim nec nunc id porttitor."
+    },
+    { "id": 7,
+      "vehName": "AutoHaus S6A",
+      "vehPrice": "88000",
+      "vehImg": "/SUV-S6A.jpg",
+      "vehCategory": "SUV",
+      "shortText": "Interdum et malesuada fames ac ante ipsum primis in faucibus. Integer quis porta massa. Morbi volutpat mattis augue, eu viverra enim congue ac. Pellentesque varius lectus ut velit dignissim accumsan. Fusce purus mauris, convallis nec congue id, auctor id diam. Sed nulla eros, aliquet vitae porttitor et, venenatis ut sem. Nulla metus velit, fringilla sit amet varius sit amet, feugiat in ligula. Curabitur imperdiet mollis sagittis. Curabitur dignissim nec nunc id porttitor."
+    },
+    { "id": 8,
+      "vehName": "AutoHaus S8",
+      "vehPrice": "123999",
+      "vehImg": "/SUV-S8.jpg",
+      "vehCategory": "SUV",
+      "shortText": "Interdum et malesuada fames ac ante ipsum primis in faucibus. Integer quis porta massa. Morbi volutpat mattis augue, eu viverra enim congue ac. Pellentesque varius lectus ut velit dignissim accumsan. Fusce purus mauris, convallis nec congue id, auctor id diam. Sed nulla eros, aliquet vitae porttitor et, venenatis ut sem. Nulla metus velit, fringilla sit amet varius sit amet, feugiat in ligula. Curabitur imperdiet mollis sagittis. Curabitur dignissim nec nunc id porttitor."
+    }],
+    "popular": [7, 8, 3]
+}

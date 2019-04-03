@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <% include includes/head.html %>
+<body>
+  <div class="container-fluid">
+    <% include includes/navbar.html %>
+    <% include includes/banner.html %>
+    <div class="col-md-12 bg-light p-5">
+      <h1 class="pb-3">Our Top Models</h1>
+      <div class="card-deck pb-3">
+        
+        <% popularVehicles.forEach(vehicle => { %>
+        
+        <div class="card bg-light" style="width: 18rem;border:none;">
+          <img src="./img/models<%= vehicle.imageURL %>" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title"><%= vehicle.name %></h5>
+            <p class="card-text"><%= vehicle.shortDesc %></p>
+            <% let vURL = '/models/' + vehicle.id; %>
+            <a href="<%= vURL %>" class="btn btn-link float-right">View Model <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+        <% }); %>
+      </div>
+    </div>
+    <% include includes/footer.html %>
+  </div>
+</body>
+</html>

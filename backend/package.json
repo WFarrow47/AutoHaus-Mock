@@ -9,7 +9,7 @@
   "author": "William Farrow",
   "license": "UNLICENSED",
   "dependencies": {
-    "express": "^4.16.4",
-    "pug": "^2.0.3"
+    "ejs": "^2.6.1",
+    "express": "^4.16.4"
   }
 }

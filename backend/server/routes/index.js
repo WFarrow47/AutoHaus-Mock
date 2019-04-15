@@ -11,11 +11,16 @@ module.exports = (param) => {
   const { AHData } = param;
 
   router.get('/', async(req,res,next) => {
-    const models = await AHData.getModels();
-    const popularVehicles = await AHData.getPopularModels();
-    return res.render('index', {page: 'index', models, popularVehicles,finance: false,
-    models: false,
-    home: true,});
+    try {
+      const models = await AHData.getModels();
+      const popularVehicles = await AHData.getPopularModels();
+      return res.render('index', {page: 'index', models, popularVehicles,finance: false,
+      models: false,
+      home: true,});
+    } catch(error) {
+      return next(error);
+    }
+   
   });
 
   router.post('/contact', async (req,res,next) => {
@@ -31,6 +36,9 @@ module.exports = (param) => {
   router.use('/models', modelsRoutes(param));
   router.use('/finance', financeRoutes(param));
   router.use('/contacts', contactsRoutes(param));
+
+
+  
 
   return router;
 };

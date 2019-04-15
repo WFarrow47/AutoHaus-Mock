@@ -5,15 +5,21 @@
 <body>
   <div class="container-fluid">
     <% include includes/navbar.html %>
-    <div class="col-md-12 bg-light p-5">
-      <h1 class="pb-3 text-center"><%= estatus %></h1>
-      <h5 class="pb-3 text-center"><%= enotice %></h5>
+    <div class="col-md-12 bg-light p-5" style="display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    ">
+      <h1 class="pb-3 text-center"><%= error.estatus %></h1>
+      <h5 class="pb-3 text-center"><%= error.enotice %></h5>
       <hr>
       <samp>
         <code>
-          <%= error.stack %>
+          <%= console.log(error.errorMsg.stack) %>
         </code>
       </samp>
+
+      <div id="goBackButton" class="btn btn-lg btn-outline-primary">Go Back</div>
     </div>
     <% include includes/footer.html %>
   </div>

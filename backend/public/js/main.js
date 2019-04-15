@@ -121,6 +121,7 @@ function initMap() {
 
     // contact us form
     contactForm.addEventListener('submit', handleContact);
+    
     if(document.currentScript.getAttribute('data-calculator') === "valid") {
         loadEventListenersAll();
         vehicles.forEach(vehicle => {
@@ -128,6 +129,11 @@ function initMap() {
             lcForm.lcVehSelect.appendChild(opt);
         });
     }
+
+    document.getElementById('goBackButton').addEventListener('click', (e) => {
+        e.preventDefault();
+        window.history.back();
+    });
 })();
 
 function checkInverse(e) {

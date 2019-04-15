@@ -1,7 +1,8 @@
-// require express, path, bodyparser
+// require express, path, bodyparser, http-errors
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
+const createError = require('http-errors');
 
 // assign express to app
 const app = express();
@@ -26,6 +27,7 @@ if(app.get('env') == 'development') app.locals.pretty = true;
 app.use(express.static('../public'));
 // set views directory
 app.set('views', path.join(__dirname, './views'));
+
 // prevent favicon warning
 app.use('/favicon.ico', (req, res, next) => {
   return res.sendStatus(204); // 204 - NO CONTENT
@@ -33,29 +35,35 @@ app.use('/favicon.ico', (req, res, next) => {
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 
-
-app.use(async (req, res, next) => {
-  try {
-    const models = await AHData.getModels();
-    const popularVehicles = await AHData.getPopularModels();
-    return next();
-  } catch (err) {
-    return next(err);
-  }
-});
-
 //load routes
 app.use('/', routes({AHData:AHData}));
+
+
 // error handling
-app.use((err, req, res, next) => {
-  res.locals.enotice = err.message;
-  const estatus = err.status || 500;
-  res.locals.estatus = estatus;
-  res.locals.error = req.app.get('env') === "development" ? err : {};
-  res.status(estatus);
-  return res.render('error', {finance: false, home: false, models: false});
+
+
+// 404 not found
+app.use((req, res, next) => {
+  return next(createError(404, "Not Found"));
 });
 
+// 500 internal server error
+app.use((err, req, res, next) => {
+  console.log("500 called");
+  const estatus = err.status || 500;
+  res.status(estatus);
+  const errorJSON = {
+    estatus: estatus,
+    errorMsg: req.app.get('env') === "development" ? err : {},
+    enotice: err.message
+  }
+  next(res.render('error', {
+    error: errorJSON,
+    finance: false,
+    home: false,
+    models: false
+  }));
+});
 
 // listen on port 3000; defined by const port.
 app.listen(port, () => console.log(`Listening on port ${port}`));
